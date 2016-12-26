@@ -181,7 +181,7 @@
             </div>
             <div class="pull-left info">
               <p>{{ Auth::user()->name }}</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
           </div>
           <!-- search form -->
@@ -197,28 +197,26 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="{{Request::getPathInfo() == 'article/index'? 'active' : ''}}treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('release')}}"><i class="fa fa-circle-o"></i>发表文章</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>发表图文</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>编辑个人分类</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>博客标签</a></li>
                 
               </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{Request::getPathInfo() == '/dicts/index'? 'active' : ''}}">
               <a href="#">
                 <i class="fa fa-files-o"></i>
-                <span>测试</span>
+                <span>字典管理</span>
                 <span class="label label-primary pull-right">4</span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> 测试</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 测试</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 测试</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 测试</a></li>
+                <li><a href="{{url('dicts/index')}}"><i class="fa fa-circle-o"></i> 字典</a></li>
+
               </ul>
             </li>
             <li>            	
@@ -226,7 +224,7 @@
                 <i class="fa fa-th"></i> <span>测试</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{Request::getPathInfo() == '/citysmanager'? 'active' : ''}}">
               <a href="#">
                 <i class="fa fa-pie-chart"></i>
                 <span>管理城市</span>
@@ -234,9 +232,6 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{url('citysmanager')}}"><i class="fa fa-circle-o"></i> 城市管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 城市管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 城市管理</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> 城市管理 城市管理</a></li>
               </ul>
             </li>
           </ul>
@@ -245,10 +240,10 @@
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="">
         <!-- Content Header (Page header) -->
         <!-- Main content -->
-        <section class="content">
+        <section class="content" style="">
          		@yield('content')	
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -271,7 +266,7 @@
     <script src="{{asset('static/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
     @show
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js')}}"></script>
+
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -279,7 +274,7 @@
     <!-- Bootstrap 3.3.5 -->
     <script src="{{asset('static/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')}}"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')}}"></script>--}}
     <script src="{{asset('static/plugins/morris/morris.min.js')}}"></script>
     <!-- Sparkline -->
     <script src="{{asset('static/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
@@ -289,7 +284,7 @@
     <!-- jQuery Knob Chart -->
     <script src="{{asset('static/plugins/knob/jquery.knob.js')}}"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js')}}"></script>
+
     <script src="{{asset('static/plugins/daterangepicker/daterangepicker.js')}}"></script>
     <!-- datepicker -->
     <script src="{{asset('static/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
